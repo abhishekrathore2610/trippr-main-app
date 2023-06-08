@@ -1,20 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import SwiperScreen from './SwiperScreen';
+import Login from './screens/Login';
+import Signup from './screens/Signup';
+import Home from './screens/Home';
+// import Screen4 from './screens/Screen4';
+// import Screen5 from './screens/Screen5';
 
-export default function App() {
+// Import your screens
+// import Screen1 from './Screen1';
+// import Screen2 from './Screen2';
+// import Screen3 from './Screen3';
+
+// Create a stack navigator
+const Stack = createStackNavigator();
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Swiper" component={SwiperScreen} />
+        {/* <Stack.Screen name="Screen4" component={Screen4} />
+        <Stack.Screen name="Screen5" component={Screen5}  /> */}
+        <Stack.Screen name='Login' component={Login}/>
+        <Stack.Screen name='Signup' component={Signup}/>
+        <Stack.Screen name='Home' component={Home}/>
+        
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
